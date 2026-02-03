@@ -48,9 +48,9 @@ Sumário: Breve revisão da aula anterior; "Undefined Variable"; exemplo calculo
 
 ## Propostas de exercícios avançados
 
-* Crie uma cópia de `t1_mini_calculator2.c` para um ficheiro à sua escolha e suporte mais operadores (`*` e `/`); Altere o programa para que a execução continue até que o utilizador insira `q` na operação (dica: ciclo while).
+1. Crie uma cópia de `t1_mini_calculator2.c` para um ficheiro à sua escolha e suporte mais operadores (`*` e `/`); Altere o programa para que a execução continue até que o utilizador insira `q` na operação (dica: ciclo while).
 
-* Escreva um programa que permita ao utilizador introduzir vários números inteiros e faça uma análise desses números. Por exemplo:
+2. Escreva um programa que permita ao utilizador introduzir vários números inteiros e faça uma análise desses números. Por exemplo:
 ```
 Quantos numeros deseja introduzir? 5
 
@@ -67,5 +67,5 @@ Soma: 32
 Média: 6.4
 ```
 
-* A `Makefile` foi actualizada recentemente (para uma versão mais completa). Explore o que pode ser feito (`indent-*`; `tidy-*`; `check-*`) e instale as ferramentas correspondentes (dica `make TAB TAB` {no terminal, escrever make e depois carregar na tecla TAB duas vezes} para ver as sugestões). Explore de que forma as novas flags de compilação alertam para os problemas existentes e corrija-os.
+3. A `Makefile` foi actualizada recentemente (para uma versão mais completa). Explore o que pode ser feito (`indent-*`; `tidy-*`; `check-*`) e instale as ferramentas correspondentes (dica `make TAB TAB` {no terminal, escrever make e depois carregar na tecla TAB duas vezes} para ver as sugestões). Explore de que forma as novas flags de compilação alertam para os problemas existentes e corrija-os.
 

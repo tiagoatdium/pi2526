@@ -40,4 +40,3 @@ int main(void)
   // um valor diferente de zero informa o SO que houve um erro.                   
   return 0;
 }
-

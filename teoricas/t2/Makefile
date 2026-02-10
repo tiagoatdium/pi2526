@@ -11,7 +11,8 @@ ALL := \
   t2_for1 \
   t2_while_true0 \
   t2_while_true1 \
-  running
+  pointers1 \
+  pointers2
 
 #------------------------------------------------------------------------------
 # compilar

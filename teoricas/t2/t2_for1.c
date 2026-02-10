@@ -1,8 +1,15 @@
 /*
-p.ex.
+implemente a função box que desenhe o seguinte.
+Por exemplo box(6):
 
+######
+#    #
+#    #
+#    #
+#    #
+######
 
-6 
+Para ficar mais claro, adiciona-se alguns números:
 
    012345
 0  ######
@@ -11,13 +18,9 @@ p.ex.
 3  #    #
 4  #    #
 5  ######
-
 */
 
 #include <stdio.h>
-
-
-
 
 void linha_cheia(int n)
 {
@@ -37,15 +40,18 @@ void linha_vazia(int n)
   putchar('\n');
 }
 
-int main(void)
+void box(int n)
 {
-  int n = 3, i;
   linha_cheia(n);
-  for(i=1; i<n-1; i++)
+  for(int i=1; i<n-1; i++)
     linha_vazia(n);
   linha_cheia(n);
-  return 0;
 }
 
-
+int main(void)
+{
+  int n = 3;
+  box(n);
+  return 0;
+}
 

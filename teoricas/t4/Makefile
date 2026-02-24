@@ -7,7 +7,12 @@ ALL := \
   t4_arrays_init0 \
   t4_arrays_init1 \
   t4_arrays_soma_h \
-  t4_arrays_soma_v
+  t4_arrays_soma_v \
+ 	t4_local_variable_addr \
+ 	t4_function_compare \
+ 	t4_array_max \
+  t4_matrix0 \
+  t4_matrix1
 
 #------------------------------------------------------------------------------
 # compilar

@@ -10,8 +10,11 @@ ALL := \
   t5_matrix2 \
   t5_matrix3 \
   t5_matrix_id \
+  t5_matrix_addlines0 \
+  t5_matrix_addlines1 \
   t5_matrix_mul0 \
-  t5_matrix_nD
+  t5_matrix_nD \
+  t5_matrix_VLA_C99
 
 #------------------------------------------------------------------------------
 # compilar

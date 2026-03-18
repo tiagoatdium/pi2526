@@ -10,7 +10,22 @@ ALL := \
   t7_binary_search_sorted_array \
   t7_bubble_sort \
   t7_selection_sort \
-  t7_insertion_sort
+  t7_insertion_sort \
+\
+  t7_struct0 \
+  t7_typedef \
+  t7_struct1 \
+  t7_struct_struct \
+  t7_struct_sizeof \
+  t7_struct_pointers0 \
+  t7_struct_self \
+  t7_struct_pointers1 \
+  t7_struct_pointers2 \
+  t7_struct_array0 \
+  t7_struct_array1 \
+  t7_struct_array_sort0 \
+  t7_struct_array_sort1 \
+  t7_struct_array_sort2
 
 #------------------------------------------------------------------------------
 # compilar

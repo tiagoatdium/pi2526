@@ -11,7 +11,9 @@ Sumário: stack vs heap; `malloc`; `free`; `calloc`; `realloc`; e `valgrind` par
 
 ## Parte 2 - 24/03/26
 
-Sumário: 
+Sumário: `assert.h` e como pode assitir no desenvolvimento de programas que utilizam alocação dinâmica de memória; Erros comuns em operações sobre memória; Structs e alocação de memória.
 
-1. `struct_realloc0.c` - gestão de memória com structs
+1. `assert0.c` - Utilização de `assert` para ajudar no desenvolvimento de código
+2. `common_mistakes.c` - Erros comuns.
+3. `struct_realloc0.c` - gestão de memória com structs
 

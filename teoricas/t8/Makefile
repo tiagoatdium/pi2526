@@ -8,6 +8,8 @@ ALL := \
   malloc_array0 \
   malloc_vs_calloc0 \
   realloc0 \
+  assert0 \
+  common_mistakes0 \
   struct_realloc0
 
 #------------------------------------------------------------------------------

@@ -1,0 +1,100 @@
+// Percursos em árvores binárias:
+//
+// Quando percorremos uma árvore, queremos visitar todos os seus nós
+// de forma sistemática. Como cada nó tem duas subárvores (esquerda e
+// direita), há várias ordens para fazer essa visita.
+//
+// 1) in order (em ordem)
+//    esquerda -> raiz -> direita
+//
+//    código exemplo para imprimir:
+//
+//      void print_in_order(abin a)
+//      {
+//        if(a == NULL)
+//        { return; }
+//    
+//        print_in_order(a->esq);
+//        printf("%d ", a->valor);
+//        print_in_order(a->dir);
+//      }
+//
+//    intuição:
+//    - primeiro visitamos toda a subárvore esquerda
+//    - depois o nó atual
+//    - por fim a subárvore direita
+//
+//    nota:
+//    - numa árvore binária de pesquisa este percurso produz
+//      os valores por ordem crescente.
+//
+//
+//
+//
+// 2) pre order (pré-ordem)
+//    raiz -> esquerda -> direita
+//
+//
+//    código exemplo para imprimir:
+//
+//      void print_pre_order(abin a)
+//      {
+//        if(a == NULL)
+//        { return; }
+//        
+//        printf("%d ", a->valor);
+//        print_pre_order(a->esq);
+//        print_pre_order(a->dir);
+//      }
+//
+//
+//    intuição:
+//    - visitamos o nó antes de visitar os seus filhos
+//
+//    notas:
+//    - travessia útil para copiar árvores (criamos a raiz antes dos "filhos")
+//    - quando queremos "processar" um nó antes de "descer" na árvore
+//
+//    Intuição:
+//    - "faz primeiro, depois desce"
+//
+//
+//
+//
+// 3) Postorder (pós-ordem)
+//    esquerda -> direita -> raiz
+//
+//    código exemplo:
+//
+//      void print_post_order(abin a)
+//      {
+//        if(a == NULL)
+//        { return; }
+//        
+//        print_post_order(a->esq);
+//        print_post_order(a->dir);
+//        printf("%d ", a->valor);
+//      }
+//
+//    intuição:
+//    - só visitamos o nó depois de visitar completamente os filhos
+//    - "resolve os subproblemas primeiro, depois combina"
+//
+//    notas:
+//    - útil para libertar memória (free): primeiro os filhos, depois o nó
+//    - calcular propriedades acumuladas (ex: tamanho, altura)
+//    - ...
+//
+//
+//
+//
+// Resumo:
+//
+// - in order: útil para obter ordem
+// - pre order: útil quando precisamos da raiz antes dos filhos
+// - post order: útil quando precisamos dos filhos antes da raiz
+//
+// - estes três percursos resultam diretamente da natureza recursiva
+//   das árvores: em cada nó, decidimos quando processar a raiz
+//   relativamente às subárvores esquerda e direita.
+//

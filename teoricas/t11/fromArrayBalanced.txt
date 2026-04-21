@@ -1,0 +1,71 @@
+// Algumas notas sobre a função 'fromArrayBalanced'.
+//
+//
+// A função constrói uma árvore binária balanceada escolhendo sempre
+// o elemento do meio como raiz.
+//
+//
+// # Exemplo 1:
+//   v = [10]
+// 
+//   Árvore:
+//       10
+//
+//
+//
+// # Exemplo 2:
+//   v = [10, 20, 30]
+//        0    1   2 -- índices
+//
+//   N = 3, middle = 1 -> raiz = 20
+//
+//   Árvore:
+//       20
+//      /  \
+//     10  30
+//
+//
+//
+// # Exemplo 3:
+//   v = [10, 20, 30, 40]
+//        0    1   2   3 -- índices
+//
+//   N = 4, middle = 2 -> raiz = 30
+//
+//   Subárvore esquerda construída a partir de [10, 20]
+//   Subárvore direita construída a partir de [40]
+//
+//   Árvore:
+//       30
+//      /  \
+//     20  40
+//    /
+//   10
+//
+//
+//
+// # Exemplo 4:
+//   v = [10, 20, 30, 40, 50, 60, 70]
+//        0    1   2   3   4   5   6
+//
+//   N = 7, middle = 3 -> raiz = 40
+//
+// Árvore:
+//         40
+//       /    \
+//     20     60
+//    / \    /  \
+//   10 30  50  70
+//
+//
+//
+// Algumas notas:
+//
+// - O array deve estar ordenado para que a árvore resultante possa
+//   ser utilizada como árvore binária de pesquisa.
+//
+// - A árvore resultante é aproximadamente balanceada:
+//   a profundidade é da ordem de log(N).
+//
+// - A escolha de middle = N/2 favorece ligeiramente a subárvore esquerda
+//   quando N é par (mas a diferença é no máximo 1 nó).

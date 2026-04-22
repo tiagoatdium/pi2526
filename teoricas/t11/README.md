@@ -5,11 +5,18 @@
 Sumário: Árvores binárias; Declaração da estrutura correspondente; Criar nó (`mkroot`); Inicializar uma árvore com os elementos de um array de forma "simples" (`fromArrayLeft`); Inicializar uma árvore balanceada (`fromArrayBalanced`; útil para pesquisas se array estiver ordenado); Funções para calcular o número de nós (`size`) e profundidade (`depth`); Diferentes tipos de travessias (in order; pre order; post order); Libertar espaço alocado para os nós de uma árvore (`free_abin`); Exportar árvore para ficheiro `.dot` para geração de uma imagem `.png` correspondente ao estado de uma árvore.
 
 1. `abin0.c` - contém as funções apresentadas na aula.
-
 2. `fromArrayBalanced.txt` e `inPrePostOrder.txt` contém algumas notas adicionais.
 
+## Parte 2 - 21/04/26
 
-**Notas**
+Sumário: Árvores binárias (Continuação);
+
+1. `abin1.c` - funções sobre árvores que retornam resultados via referências.
+2. `abin2.c` - ficheiro base para a próxima aula (27/04).
+3. `vargs.c` - funções com argumentos variáveis.
+
+
+## Notas
 
 Ao executar o comando `make abin0` nesta directoria (`t11`) será gerado o ficheiro executável correspondente. Executar este comando (`make abin0`) invoca o seguinte comando correspondente a uma chamada ao compilador disponível no sistema:
 ```

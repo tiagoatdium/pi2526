@@ -4,7 +4,10 @@ LDFLAGS ?=
 
 # programas a compilar
 ALL := \
-  abin0
+  abin0 \
+  abin1 \
+  abin2 \
+  vargs
 
 DOT_FILES := \
   from_array_left.dot \

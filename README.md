@@ -1,6 +1,8 @@
 # Programação Imperativa 25/26
 
-* [`teoricas/t8/`](https://github.com/tiagoatdium/pi2526/tree/main/teoricas/t10) com o código C correspondente à aula de 13/04/2026 e 14/04/2026; Ler [README.md](https://github.com/tiagoatdium/pi2526/blob/main/teoricas/t10/README.md) correspondente.
+* [`teoricas/t11/`](https://github.com/tiagoatdium/pi2526/tree/main/teoricas/t11) com o código C correspondente à aula de 20/04/2026 e 21/04/2026; Ler [README.md](https://github.com/tiagoatdium/pi2526/blob/main/teoricas/t11/README.md) correspondente.
+
+* [`teoricas/t10/`](https://github.com/tiagoatdium/pi2526/tree/main/teoricas/t10) com o código C correspondente à aula de 13/04/2026 e 14/04/2026; Ler [README.md](https://github.com/tiagoatdium/pi2526/blob/main/teoricas/t10/README.md) correspondente.
 
 * [`teoricas/t9/`](https://github.com/tiagoatdium/pi2526/tree/main/teoricas/t9) com o código C correspondente à aula de 07/04/2026; Ler [README.md](https://github.com/tiagoatdium/pi2526/blob/main/teoricas/t9/README.md) correspondente.
 

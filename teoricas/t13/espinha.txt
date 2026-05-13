@@ -1,0 +1,90 @@
+int constroiEspinha(abin *a)
+{
+  abin *atual = a;
+  int n = 0;
+
+  while(*atual != NULL)
+  {
+    if((*atual)->esq == NULL)
+    {
+      // Este nó já está na forma certa:
+      // não tem filho esquerdo.
+      //
+      // Podemos contá-lo e avançar para o próximo nó da espinha.
+      n++;
+      atual = &((*atual)->dir);
+    }
+    else
+    {
+      // Ainda há uma subárvore à esquerda.
+      //
+      // Fazemos uma rotação à direita para fazer subir
+      // o filho esquerdo.
+      //
+      // Depois da rotação, continuamos no mesmo endereço
+      // porque a raiz desta subárvore mudou.
+      rodaDireita(atual);
+    }
+  }
+
+  return n;
+}
+
+// versão alternativa
+
+int constroiEspinha(abin *a)
+{
+  int n = 0;
+  abin *atual = a;
+
+  while(atual != NULL && *atual != NULL)
+  {
+    // Coloca o menor elemento da subárvore atual na raiz.
+    //
+    // Depois desta chamada, (*atual)->esq é NULL,
+    // porque se houvesse filho esquerdo, ainda existiria
+    // um valor menor.
+    promoveMenor(atual);
+
+    // A raiz atual já está no sítio certo da espinha.
+    n++;
+
+    // Continuamos a construir a espinha no que resta da árvore,
+    // que está à direita da raiz atual.
+    atual = &((*atual)->dir);
+  }
+
+  return n;
+}
+
+// função que calcula o "último"
+int constroiEspinhaAux(abin *a, abin *ult)
+{
+  int n = 0;
+  abin *atual = a;
+
+  *ult = NULL;
+
+  while(atual != NULL && *atual != NULL)
+  {
+    promoveMenor(atual);
+
+    //
+    // Depois de promoveMenor(atual), o menor elemento da subárvore atual
+    // está na raiz de *atual.
+    //
+    // Esse nó já fica na posição certa da espinha.
+    //
+    n++;
+
+    // Este é, até agora, o último nó da espinha construída.
+    *ult = *atual;
+
+    // Continuamos no resto da árvore, que está à direita.
+    atual = &((*atual)->dir);
+  }
+
+  return n;
+}
+
+

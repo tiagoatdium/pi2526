@@ -1,0 +1,98 @@
+// promoveMenor
+//
+// Esta função promove o menor elemento da árvore para a raiz.
+//
+// Numa árvore binária de pesquisa, o menor elemento está sempre o mais
+// à esquerda possível. Portanto, para o encontrar, seguimos sempre pela
+// subárvore esquerda.
+//
+// A função é recursiva:
+//
+// - se a árvore é vazia, não há nada a fazer
+// - se a raiz não tem filho esquerdo, então a própria raiz já é o menor
+// - caso contrário, o menor elemento está algures na subárvore esquerda
+//
+// Primeiro promovemos o menor elemento dentro da subárvore esquerda:
+//
+//   promoveMenor(&((*a)->esq));
+//
+// Depois fazemos uma rotação à direita na raiz atual:
+//
+//   rodaDireita(a);
+//
+// Esta rotação faz subir a raiz da subárvore esquerda um nível.
+// Como o menor elemento já foi promovido dentro dessa subárvore,
+// repetir este processo ao voltar da recursão faz com que o menor
+// elemento acabe por chegar à raiz da árvore.
+//
+// Exemplo intuitivo:
+//
+//        50
+//       /
+//     30
+//    /
+//  20
+//
+// O menor é 20.
+// Primeiro promovemos 20 dentro da subárvore de 30.
+// Depois rodamos à direita em 50.
+// O resultado coloca 20 na raiz, preservando a propriedade da BST.
+void promoveMenor(abin *a)
+{
+  if(a == NULL || *a == NULL || (*a)->esq == NULL)
+  { return; }
+
+  promoveMenor(&((*a)->esq));
+  rodaDireita(a);
+}
+
+
+// promoveMaior
+//
+// Esta função promove o maior elemento da árvore para a raiz.
+//
+// É a versão simétrica de promoveMenor.
+//
+// Numa árvore binária de pesquisa, o maior elemento está sempre o mais
+// à direita possível. Portanto, para o encontrar, seguimos sempre pela
+// subárvore direita.
+//
+// A função é recursiva:
+//
+// - se a árvore é vazia, não há nada a fazer
+// - se a raiz não tem filho direito, então a própria raiz já é o maior
+// - caso contrário, o maior elemento está algures na subárvore direita
+//
+// Primeiro promovemos o maior elemento dentro da subárvore direita:
+//
+//   promoveMaior(&((*a)->dir));
+//
+// Depois fazemos uma rotação à esquerda na raiz atual:
+//
+//   rodaEsquerda(a);
+//
+// Esta rotação faz subir a raiz da subárvore direita um nível.
+// Como o maior elemento já foi promovido dentro dessa subárvore,
+// repetir este processo ao voltar da recursão faz com que o maior
+// elemento acabe por chegar à raiz da árvore.
+//
+// Exemplo intuitivo:
+//
+//   20
+//     \
+//      30
+//        \
+//         50
+//
+// O maior é 50.
+// Primeiro promovemos 50 dentro da subárvore de 30.
+// Depois rodamos à esquerda em 20.
+// O resultado coloca 50 na raiz, preservando a propriedade da BST.
+void promoveMaior(abin *a)
+{
+  if(a == NULL || *a == NULL || (*a)->dir == NULL)
+  { return; }
+
+  promoveMaior(&((*a)->dir));
+  rodaEsquerda(a);
+}

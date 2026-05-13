@@ -1,0 +1,193 @@
+// Equilibra uma espinha usando os primeiros 'n' nós.
+//
+// Uma "espinha" é uma árvore em que todos os nós têm filho esquerdo NULL:
+//
+//   10
+//     \
+//      20
+//        \
+//         30
+//           \
+//            40
+//              \
+//               50
+//                 \
+//                  60
+//                    \
+//                     70
+//
+// Como a espinha veio de uma BST, os valores aparecem por ordem crescente
+// seguindo sempre os apontadores 'dir' (direita).
+//
+// -----------------------------------------------------------------------------
+// Exemplo com 3 elementos
+// -----------------------------------------------------------------------------
+//
+// Espinha:
+//
+//   100
+//     \
+//      200
+//        \
+//         300
+//
+// Como n = 3:
+//
+//   n_esq = 3 / 2 = 1
+//   n_dir = 3 - 1 - 1 = 1
+//
+// Ou seja:
+//
+// - 100 fica na subárvore esquerda
+// - 200 fica na raiz
+// - 300 fica na subárvore direita
+//
+// Resultado:
+//
+//      200
+//     /   \
+//   100   300
+//
+// -----------------------------------------------------------------------------
+// Exemplo com 7 elementos
+// -----------------------------------------------------------------------------
+//
+// Espinha:
+//
+//   10
+//     \
+//      20
+//        \
+//         30
+//           \
+//            40
+//              \
+//               50
+//                 \
+//                  60
+//                    \
+//                     70
+//
+// Como n = 7:
+//
+//   n_esq = 7 / 2 = 3
+//   n_dir = 7 - 3 - 1 = 3
+//
+// Ou seja:
+//
+// - 10, 20, 30 formam a subárvore esquerda
+// - 40 fica na raiz
+// - 50, 60, 70 formam a subárvore direita
+//
+// Resultado:
+//
+//          40
+//        /    \
+//      20      60
+//     /  \    /  \
+//   10   30  50   70
+//
+// -----------------------------------------------------------------------------
+//
+// A ideia é a mesma de construir uma árvore equilibrada a partir de um
+// array ordenado:
+//
+// - usar a primeira metade para construir a subárvore esquerda
+// - usar o elemento do meio como raiz
+// - usar a segunda metade para construir a subárvore direita
+//
+// Mas aqui não temos índices como num array.
+// Em vez disso, temos um cursor chamado espinha, que vai avançando pelos nós.
+//
+// A função encontra-se comentada de acordo com o segundo exemplo (10,20,...,70)
+//
+// Argumentos:
+// - cursor : brevemente, um cursor é uma variável usada para percorrer uma estrutura, neste caso avançando de nó em nó à medida que o algoritmo consome esses nós.
+// - n : número de nós
+// - resultado : a variável que irá conter o resultado de equilibrar a árvore
+//
+void equilibraEspinhaAux(abin *cursor, int n, abin *resultado)
+{
+  int n_esq, n_dir;
+  abin raiz, lado_esq, lado_dir;
+
+
+  if(n == 0 || *cursor == NULL)
+  { *resultado = NULL; // como não há nós para utilizar, a árvore construída é vazia
+    return;
+  }
+
+
+  n_esq = n / 2; // número de nós do lado esquerdo
+  n_dir = n - n_esq - 1; // número de nós do lado direito
+
+
+  // 1. Construir a subárvore esquerda:
+  //
+  //   - usamos os primeiros 'n_esq' nós de 'cursor'
+  //   - a chamada seguinte "avança" o cursor (em relação aos nós consumidos)
+  //     - então, quando a função termina, '*cursor' aponta para o próximo nó que ainda não foi utilizado
+  
+  // - para o exemplo com 7 elementos (10,20,...,70), e "na primeira chamada" '*cursor'
+  //   apontará para "40" (10, 20 e 30 foram utilizados para o lado esquerdo da árvore)
+  //
+  equilibraEspinhaAux(cursor, n_esq, &lado_esq);
+
+
+  // 2. O nó seguinte (o próximo nó que ainda não foi utilizado) passa a ser a raiz:
+  //
+	//   - neste ponto, e para a "primeira chamada" a esta função:
+	//     - 'lado_esq' contém a subárvore esquerda já construída
+	//     - 'lado_esq->valor' é 20:
+	//
+	//           20
+	//          /  \
+	//        10   30
+
+  //   - tal como referido anteriormente, '*cursor' aponta para o primeiro nó que não foi utilizado e que deve ficar na
+  //     raiz ("40"), como tal:
+  //
+  raiz = *cursor;
+
+  // e ligamos também a subárvore esquerda à raiz
+  raiz->esq = lado_esq;
+  
+
+  // de seguida, avançamos o cursor para o próximo nó que ainda não foi utilizado. Numa primeira chamada à função:
+  //  - o "40" já foi consumido e, como tal, cursor avança (para "50")
+  *cursor = (*cursor)->dir;
+
+
+  // 3. Construimos agora a subárvore direita.
+  //   - usamos os próximos 'n_dir' nós de 'cursor' (que entretanto avançou em consequência da chamada
+  //     correspondente ao lado esquerdo e da linha anterior '*cursor = (*cursor)->dir;')
+  //
+  equilibraEspinhaAux(cursor, n_dir, &lado_dir);
+
+  // e ligamos a subárvore direita à raiz
+  raiz->dir = lado_dir;
+
+  // 4. A árvore equilibrada construída com os 'n' nós tem raiz "raiz".
+  *resultado = raiz;
+}
+
+
+
+//
+// Função de interface (a que deve ser utilizada pelo programador, a versão equilibraEspinhaAux pode ser considerada interna):
+//
+// - esta função recebe em *a uma espinha e transforma essa mesma espinha numa árvore equilibrada
+// - o parâmetro 'n' indica o número total de nós
+//
+
+void equilibraEspinha(abin *a, int n)
+{
+  abin cursor, resultado;
+
+  cursor = *a;
+  
+  equilibraEspinhaAux(&cursor, n, &resultado);
+  
+  *a = resultado;
+}
+

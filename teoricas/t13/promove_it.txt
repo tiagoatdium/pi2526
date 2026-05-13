@@ -1,0 +1,104 @@
+// promoveMenor
+//
+// Esta versão promove o menor elemento para a raiz usando rotações
+// sucessivas à direita.
+//
+// Numa árvore binária de pesquisa, o menor elemento está sempre o mais
+// à esquerda possível.
+//
+// Portanto, enquanto a raiz da árvore atual tiver filho esquerdo,
+// ainda há um valor menor do que ela. Nesse caso, fazemos uma rotação
+// à direita.
+//
+// Cada rotação à direita faz subir o filho esquerdo um nível.
+// Repetindo este processo, o menor elemento vai subindo até chegar
+// à raiz.
+//
+// Exemplo:
+//
+//        50
+//       /
+//     30
+//    /
+//  20
+//
+// Depois de uma rotação à direita:
+//
+//      30
+//     /  \
+//   20    50
+//
+// Depois de outra rotação à direita:
+//
+//      20
+//        \
+//         30
+//           \
+//            50
+//
+// No fim, a raiz já não tem filho esquerdo.
+// Logo, a raiz é o menor elemento da árvore.
+void promoveMenor(abin *a)
+{
+  if(a == NULL)
+  { return; }
+
+  while(*a != NULL && (*a)->esq != NULL)
+  {
+    rodaDireita(a);
+  }
+}
+
+
+// promoveMaior
+//
+// Esta versão promove o maior elemento para a raiz usando rotações
+// sucessivas à esquerda.
+//
+// É simétrica de promoveMenor.
+//
+// Numa árvore binária de pesquisa, o maior elemento está sempre o mais
+// à direita possível.
+//
+// Portanto, enquanto a raiz da árvore atual tiver filho direito,
+// ainda há um valor maior do que ela. Nesse caso, fazemos uma rotação
+// à esquerda.
+//
+// Cada rotação à esquerda faz subir o filho direito um nível.
+// Repetindo este processo, o maior elemento vai subindo até chegar
+// à raiz.
+//
+// Exemplo:
+//
+//   20
+//     \
+//      30
+//        \
+//         50
+//
+// Depois de uma rotação à esquerda:
+//
+//       30
+//      /  \
+//    20    50
+//
+// Depois de outra rotação à esquerda:
+//
+//          50
+//         /
+//       30
+//      /
+//    20
+//
+// No fim, a raiz já não tem filho direito.
+// Logo, a raiz é o maior elemento da árvore.
+void promoveMaior(abin *a)
+{
+  if(a == NULL)
+  { return; }
+
+  while(*a != NULL && (*a)->dir != NULL)
+  {
+    rodaEsquerda(a);
+  }
+}

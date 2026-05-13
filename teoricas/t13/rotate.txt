@@ -1,0 +1,123 @@
+// rodaEsquerda
+//
+// Esta função faz uma rotação à esquerda na raiz da árvore *a.
+//
+// A rotação à esquerda é usada quando queremos fazer subir o filho direito
+// da raiz. Depois da rotação, esse filho direito passa a ser a nova raiz
+// desta subárvore.
+//
+// Antes:
+//
+//      A
+//     / \
+//    X   B
+//       / \
+//      Y   Z
+//
+// Depois de rodaEsquerda:
+//
+//        B
+//       / \
+//      A   Z
+//     / \
+//    X   Y
+//
+// Repare que a ordem da BST é preservada:
+//
+// - X continua à esquerda de A
+// - Y passa a ser filho direito de A
+// - A passa a ser filho esquerdo de B
+// - Z continua à direita de B
+//
+// Em termos de valores:
+//
+//   X < A < Y < B < Z
+//
+// continua verdadeiro depois da rotação.
+//
+// O parâmetro é abin *a porque a raiz desta subárvore pode mudar.
+// Se usássemos apenas abin a, mudaríamos só uma cópia local do apontador.
+void rodaEsquerda(abin *a)
+{
+  abin b;
+
+  if(a == NULL || *a == NULL || (*a)->dir == NULL)
+  { return; }
+
+  // b é o filho direito da raiz atual.
+  // É este nó que vai subir e tornar-se a nova raiz.
+  b = (*a)->dir;
+
+  // A subárvore esquerda de b passa a ser a subárvore direita
+  // da raiz antiga.
+  (*a)->dir = b->esq;
+
+  // A raiz antiga passa a ser filho esquerdo de b.
+  b->esq = *a;
+
+  // Atualizamos a raiz da subárvore.
+  *a = b;
+}
+
+
+// rodaDireita
+//
+// Esta função faz uma rotação à direita na raiz da árvore *a.
+//
+// A rotação à direita é simétrica da rotação à esquerda.
+// Aqui queremos fazer subir o filho esquerdo da raiz.
+// Depois da rotação, esse filho esquerdo passa a ser a nova raiz
+// desta subárvore.
+//
+// Antes:
+//
+//        B
+//       / \
+//      A   Z
+//     / \
+//    X   Y
+//
+// Depois de rodaDireita:
+//
+//      A
+//     / \
+//    X   B
+//       / \
+//      Y   Z
+//
+// Repare que a ordem da BST é preservada:
+//
+// - X continua à esquerda de A
+// - B passa a ser filho direito de A
+// - Y passa a ser filho esquerdo de B
+// - Z continua à direita de B
+//
+// Em termos de valores:
+//
+//   X < A < Y < B < Z
+//
+// continua verdadeiro depois da rotação.
+//
+// Tal como em rodaEsquerda, usamos abin *a porque a raiz desta subárvore
+// muda durante a rotação.
+void rodaDireita(abin *a)
+{
+  abin b;
+
+  if(a == NULL || *a == NULL || (*a)->esq == NULL)
+  { return; }
+
+  // b é o filho esquerdo da raiz atual.
+  // É este nó que vai subir e tornar-se a nova raiz.
+  b = (*a)->esq;
+
+  // A subárvore direita de b passa a ser a subárvore esquerda
+  // da raiz antiga.
+  (*a)->esq = b->dir;
+
+  // A raiz antiga passa a ser filho direito de b.
+  b->dir = *a;
+
+  // Atualizamos a raiz da subárvore.
+  *a = b;
+}
